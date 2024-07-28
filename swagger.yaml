@@ -6,9 +6,13 @@ info:
     email: oojoseph67@gmail.com
     name: Joseph
     url: https://github.com/oojoseph67/
-host: e-commerce-api-f7r1.onrender.com
+host: megaexe-prescreening.onrender.com
 basePath: /api/v1
-securityDefinitions: {}
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
 schemes:
   - https
 consumes:
@@ -16,6 +20,62 @@ consumes:
 produces:
   - application/json
 paths:
+  /auth/register:
+    post:
+      summary: Register User
+      tags:
+        - Auth
+      operationId: RegisterUser
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/RegisterRequest'
+      responses:
+        '201':
+          description: ''
+          headers: {}
+  /auth/login:
+    post:
+      summary: Login User
+      tags:
+        - Auth
+      operationId: LoginUser
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/LoginRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /users/{id}:
+    get:
+      summary: Get User by ID
+      tags:
+        - User
+      operationId: GetUserById
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
   /post:
     get:
       summary: Get All Posts
@@ -53,6 +113,8 @@ paths:
         '201':
           description: ''
           headers: {}
+      security:
+        - Bearer: []
   /post/{id}:
     patch:
       summary: Edit Post
@@ -77,6 +139,8 @@ paths:
         '200':
           description: ''
           headers: {}
+      security:
+        - Bearer: []
     delete:
       summary: Delete Post
       tags:
@@ -94,6 +158,8 @@ paths:
         '200':
           description: ''
           headers: {}
+      security:
+        - Bearer: []
   /post/{id}/upvote:
     post:
       summary: Upvote Post
@@ -112,6 +178,8 @@ paths:
         '200':
           description: ''
           headers: {}
+      security:
+        - Bearer: []
   /post/{id}/downvote:
     post:
       summary: Downvote Post
@@ -130,6 +198,8 @@ paths:
         '200':
           description: ''
           headers: {}
+      security:
+        - Bearer: []
   /comment:
     post:
       summary: Add Comment
@@ -149,6 +219,8 @@ paths:
         '201':
           description: ''
           headers: {}
+      security:
+        - Bearer: []
   /comment/{postId}:
     get:
       summary: Get Comments
@@ -168,6 +240,31 @@ paths:
           description: ''
           headers: {}
 definitions:
+  RegisterRequest:
+    title: RegisterRequest
+    type: object
+    properties:
+      username:
+        type: string
+      email:
+        type: string
+      password:
+        type: string
+    required:
+      - username
+      - email
+      - password
+  LoginRequest:
+    title: LoginRequest
+    type: object
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    required:
+      - email
+      - password
   CreatePostRequest:
     title: CreatePostRequest
     type: object
