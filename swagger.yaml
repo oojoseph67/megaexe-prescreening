@@ -1,0 +1,209 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: POST-API
+  contact:
+    email: oojoseph67@gmail.com
+    name: Joseph
+    url: https://github.com/oojoseph67/
+host: e-commerce-api-f7r1.onrender.com
+basePath: /api/v1
+securityDefinitions: {}
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /post:
+    get:
+      summary: Get All Posts
+      tags:
+        - Post
+      operationId: GetAllPosts
+      produces:
+        - application/json
+      parameters:
+        - name: sort
+          in: query
+          required: false
+          type: string
+          enum: [time, upvotes]
+          description: Sort posts by time or upvotes
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    post:
+      summary: Create Post
+      tags:
+        - Post
+      operationId: CreatePost
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/CreatePostRequest'
+      responses:
+        '201':
+          description: ''
+          headers: {}
+  /post/{id}:
+    patch:
+      summary: Edit Post
+      tags:
+        - Post
+      operationId: EditPost
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+          description: ''
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/EditPostRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    delete:
+      summary: Delete Post
+      tags:
+        - Post
+      operationId: DeletePost
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /post/{id}/upvote:
+    post:
+      summary: Upvote Post
+      tags:
+        - Post
+      operationId: UpvotePost
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /post/{id}/downvote:
+    post:
+      summary: Downvote Post
+      tags:
+        - Post
+      operationId: DownvotePost
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /comment:
+    post:
+      summary: Add Comment
+      tags:
+        - Comment
+      operationId: AddComment
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/AddCommentRequest'
+      responses:
+        '201':
+          description: ''
+          headers: {}
+  /comment/{postId}:
+    get:
+      summary: Get Comments
+      tags:
+        - Comment
+      operationId: GetComments
+      produces:
+        - application/json
+      parameters:
+        - name: postId
+          in: path
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+definitions:
+  CreatePostRequest:
+    title: CreatePostRequest
+    type: object
+    properties:
+      image:
+        type: string
+      content:
+        type: string
+      category:
+        type: string
+    required:
+      - image
+      - content
+      - category
+  EditPostRequest:
+    title: EditPostRequest
+    type: object
+    properties:
+      content:
+        type: string
+      image:
+        type: string
+      category:
+        type: string
+    required:
+      - content
+      - image
+      - category
+  AddCommentRequest:
+    title: AddCommentRequest
+    type: object
+    properties:
+      postId:
+        type: string
+      content:
+        type: string
+    required:
+      - postId
+      - content

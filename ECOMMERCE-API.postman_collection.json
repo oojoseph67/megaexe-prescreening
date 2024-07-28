@@ -1,0 +1,634 @@
+{
+	"info": {
+		"_postman_id": "3587c593-4fd5-484d-85a8-240c001c4d66",
+		"name": "ECOMMERCE-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14020940"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{defaultURL}}api/v1/user",
+							"host": [
+								"{{defaultURL}}api"
+							],
+							"path": [
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{defaultURL}}api/v1/user/661e209c72c370fadc638ef9",
+							"host": [
+								"{{defaultURL}}api"
+							],
+							"path": [
+								"v1",
+								"user",
+								"661e209c72c370fadc638ef9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show Current User",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Update Password",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"oldPassword\": \"secret\",\n    \"newPassword\": \"newSecret\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{defaultURL}}api/v1/user/updateUserPassword",
+							"host": [
+								"{{defaultURL}}api"
+							],
+							"path": [
+								"v1",
+								"user",
+								"updateUserPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"newName\": \"James\",\n    \"newEmail\": \"oojosepae@h.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{defaultURL}}api/v1/user/updateUser",
+							"host": [
+								"{{defaultURL}}api"
+							],
+							"path": [
+								"v1",
+								"user",
+								"updateUser"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Joseph\",\n    \"email\": \"o3jpro@gmail.com\",\n    \"password\": \"secret\"\n}\n\n// {\n//     \"name\": \"Zip\",\n//     \"email\": \"zip@gmail.com\",\n//     \"password\": \"secret\"\n// }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{defaultURL}}api/v1/auth/register",
+							"host": [
+								"{{defaultURL}}api"
+							],
+							"path": [
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Joseph\",\r\n    \"email\": \"o3jpro@gmail.com\",\r\n    \"password\": \"secret\"\r\n}\r\n\r\n// {\r\n//     \"name\": \"Zip\",\r\n//     \"email\": \"zip@gmail.com\",\r\n//     \"password\": \"secret\"\r\n// }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{defaultURL}}api/v1/auth/login",
+							"host": [
+								"{{defaultURL}}api"
+							],
+							"path": [
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{defaultURL}}api/v1/auth/logout",
+							"host": [
+								"{{defaultURL}}api"
+							],
+							"path": [
+								"v1",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reviews",
+			"item": [
+				{
+					"name": "Create Review",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"product\": \"662363fadb587d8a9de17e66\",\n    \"rating\": 4,\n    \"title\": \"worst pc every\",\n    \"comment\": \"this is the worst macbook every to be created in the fucking world... i love it\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{defaultURL}}api/v1/review",
+							"host": [
+								"{{defaultURL}}api"
+							],
+							"path": [
+								"v1",
+								"review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Reviews",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{defaultURL}}api/v1/review/",
+							"host": [
+								"{{defaultURL}}api"
+							],
+							"path": [
+								"v1",
+								"review",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Reviews By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{defaultURL}}api/v1/review/661f80291fa4513b5ea91a89",
+							"host": [
+								"{{defaultURL}}api"
+							],
+							"path": [
+								"v1",
+								"review",
+								"661f80291fa4513b5ea91a89"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"product\": \"661f09a17f4b6273cd7579b5\",\n    \"rating\": 4,\n    \"title\": \"bestest pc every\",\n    \"comment\": \"this is the best macbook every to be created in the fucking world... i love it\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{defaultURL}}api/v1/review/661f80291fa4513b5ea91a89",
+							"host": [
+								"{{defaultURL}}api"
+							],
+							"path": [
+								"v1",
+								"review",
+								"661f80291fa4513b5ea91a89"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{defaultURL}}api/v1/review/661f7ff71fa4513b5ea91a81",
+							"host": [
+								"{{defaultURL}}api"
+							],
+							"path": [
+								"v1",
+								"review",
+								"661f7ff71fa4513b5ea91a81"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Create Producet",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Mac M2 Pro\",\n    \"price\": \"1234\",\n    \"description\": \"Mac M2 Pro\",\n    // \"image\",\n    \"category\": \"Laptops\",\n    \"company\": \"Apple\",\n    \"colors\": \"Black\",\n    \"featured\": true,\n    \"freeShipping\": false,\n    \"inventory\": 20,\n    \"averageRating\": 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{defaultURL}}api/v1/product",
+							"host": [
+								"{{defaultURL}}api"
+							],
+							"path": [
+								"v1",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{defaultURL}}api/v1/product",
+							"host": [
+								"{{defaultURL}}api"
+							],
+							"path": [
+								"v1",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{defaultURL}}api/v1/product/661f09a17f4b6273cd7579b5",
+							"host": [
+								"{{defaultURL}}api"
+							],
+							"path": [
+								"v1",
+								"product",
+								"661f09a17f4b6273cd7579b5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Mac M2 Pro\",\n    \"price\": \"2000\",\n    \"description\": \"Mac M2 Pro 2023 Model. One of the best in the market right now, dont miss out\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{defaultURL}}api/v1/product/661f0a84a19e6fdf63f89c3d",
+							"host": [
+								"{{defaultURL}}api"
+							],
+							"path": [
+								"v1",
+								"product",
+								"661f0a84a19e6fdf63f89c3d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{defaultURL}}api/v1/product/661f0a84a19e6fdf63f89c3d",
+							"host": [
+								"{{defaultURL}}api"
+							],
+							"path": [
+								"v1",
+								"product",
+								"661f0a84a19e6fdf63f89c3d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Product Image",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/mcqu33n/Pictures/vlcsnap-2024-03-19-10h15m10s025.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{defaultURL}}api/v1/product/updateProductImage",
+							"host": [
+								"{{defaultURL}}api"
+							],
+							"path": [
+								"v1",
+								"product",
+								"updateProductImage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Product Review",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{defaultURL}}api/v1/product/661f09a17f4b6273cd7579b5/reviews",
+							"host": [
+								"{{defaultURL}}api"
+							],
+							"path": [
+								"v1",
+								"product",
+								"661f09a17f4b6273cd7579b5",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Get Order For Current User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{defaultURL}}api/v1/order/show/me",
+							"host": [
+								"{{defaultURL}}api"
+							],
+							"path": [
+								"v1",
+								"order",
+								"show",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tax\": \"88\",\n    \"shippingFee\": \"345\",\n    \"items\": [\n        {\n            \"name\": \"item1\",\n            \"price\": 200,\n            \"image\": \"item1.jpg\",\n            \"amount\": 2,\n            \"product\": 14885994\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{defaultURL}}api/v1/order/",
+							"host": [
+								"{{defaultURL}}api"
+							],
+							"path": [
+								"v1",
+								"order",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Order",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{defaultURL}}api/v1/order",
+							"host": [
+								"{{defaultURL}}api"
+							],
+							"path": [
+								"v1",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{defaultURL}}api/v1/order/8394",
+							"host": [
+								"{{defaultURL}}api"
+							],
+							"path": [
+								"v1",
+								"order",
+								"8394"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Order",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{defaultURL}}api/v1/order/93993",
+							"host": [
+								"{{defaultURL}}api"
+							],
+							"path": [
+								"v1",
+								"order",
+								"93993"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Order",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{defaultURL}}api/v1/order/93993",
+							"host": [
+								"{{defaultURL}}api"
+							],
+							"path": [
+								"v1",
+								"order",
+								"93993"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
