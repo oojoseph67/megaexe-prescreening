@@ -18,12 +18,17 @@ const createPost = async (req, res) => {
 
 const editPost = async (req, res) => {
   const { id: postId } = req.params;
+  const { user } = req.user;
   const { content, image, category } = req.body;
 
   const post = await Post.findById(postId);
 
   if (!post) {
     throw new CustomError.NotFoundError(`No post with id ${postId}`);
+  }
+
+  if (post.userId.toString() !== user.userId.toString()) {
+    throw new CustomError.UnauthorizedError("Not authorized to edit this post");
   }
 
   post.content = content;
@@ -36,11 +41,16 @@ const editPost = async (req, res) => {
 
 const deletePost = async (req, res) => {
   const { id: postId } = req.params;
+  const { user } = req.user;
 
   const post = await Post.findById(postId);
 
   if (!post) {
     throw new CustomError.NotFoundError(`No post with id: ${postId}`);
+  }
+
+  if (post.userId.toString() !== user.userId.toString()) {
+    throw new CustomError.UnauthorizedError("Not authorized to edit this post");
   }
 
   await post.remove();
